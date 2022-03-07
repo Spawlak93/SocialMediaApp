@@ -9,7 +9,7 @@ namespace SocialMediaApp.Shared.Post
     public class PostListItem
     {
         public int Id { get; set; }
-        public string Topic { get; set; }
+        public string Title { get; set; }
         public string Preview { get; set; }
         public int NumberOfComments { get; set; }
     }

@@ -11,6 +11,12 @@ namespace SocialMediaApp.Server.Services.PostServices
 
         Task<bool> CreatePostAsync(PostCreate model);
 
-        Task<PostDetail> GetPostById(int postId);
+        Task<PostDetail> GetPostByIdAsync(int postId);
+
+        //Update TODO
+
+        //Delete TODO
+
+        void SetUserId(string userId);
     }
 }

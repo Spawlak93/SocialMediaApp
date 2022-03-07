@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialMediaApp.Server.Data;
 using SocialMediaApp.Server.Models;
+using SocialMediaApp.Server.Services.CommentServices;
+using SocialMediaApp.Server.Services.PostServices;
+using SocialMediaApp.Server.Services.ReplyServices;
 using System.Linq;
 
 namespace SocialMediaApp.Server
@@ -37,6 +40,10 @@ namespace SocialMediaApp.Server
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IReplyService, ReplyService>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

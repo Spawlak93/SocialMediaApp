@@ -13,6 +13,8 @@ namespace SocialMediaApp.Server.Models
         public string OwnerId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
+        public string UserName { get => User.UserName; }
+
         public string Content { get; set; }
 
         public virtual ICollection<Reply> Replies { get; set; } = new List<Reply>();

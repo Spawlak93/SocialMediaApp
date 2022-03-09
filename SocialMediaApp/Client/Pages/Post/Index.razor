@@ -1,0 +1,41 @@
+﻿@page "/post"
+@using SocialMediaApp.Shared.PostModels
+@inject HttpClient http
+@attribute [Authorize]
+<h3>Posts</h3>
+<a href="post/create">create new post</a>
+@if(posts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Preview</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var post in posts)
+            {
+                <tr>
+                    <td><a href=@($"post/{post.Id}")>@post.Title</a></td>
+                    <td>@post.Preview</td>
+                    <td>@post.NumberOfComments</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<PostListItem> posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await http.GetFromJsonAsync<List<PostListItem>>("api/post");
+    }
+}

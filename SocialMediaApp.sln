@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaApp.Server", "SocialMediaApp\Server\SocialMediaApp.Server.csproj", "{64082026-E368-4C6D-A040-97B7DA74BFF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMediaApp.Server", "SocialMediaApp\Server\SocialMediaApp.Server.csproj", "{64082026-E368-4C6D-A040-97B7DA74BFF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaApp.Client", "SocialMediaApp\Client\SocialMediaApp.Client.csproj", "{984DDD4B-2AE2-4857-8D51-5832637F55FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMediaApp.Client", "SocialMediaApp\Client\SocialMediaApp.Client.csproj", "{984DDD4B-2AE2-4857-8D51-5832637F55FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaApp.Shared", "SocialMediaApp\Shared\SocialMediaApp.Shared.csproj", "{F6350935-DE37-4062-BE4C-9C2129B3E4D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMediaApp.Shared", "SocialMediaApp\Shared\SocialMediaApp.Shared.csproj", "{F6350935-DE37-4062-BE4C-9C2129B3E4D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

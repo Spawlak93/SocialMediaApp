@@ -1,0 +1,43 @@
+﻿@page "/post/create"
+@attribute [Authorize]
+@inject HttpClient http
+@inject NavigationManager navigation
+@using SocialMediaApp.Shared.PostModels
+<h3>Create new post</h3>
+
+@if(errorMessage != null)
+{
+    <h5 class="text-danger">@errorMessage</h5>
+}
+
+<div class="container">
+    <EditForm Model="@model" OnValidSubmit="@HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label>Title</label>
+            <InputText class="form-control" @bind-Value="model.Title" />
+            <label>Body</label>
+            <InputText class="form-control" @bind-Value="model.Body" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-5">Submit</button>
+    </EditForm>
+</div>
+
+
+@code {
+    private PostCreate model = new PostCreate();
+    private string errorMessage;
+
+    private async void HandleSubmit()
+    {
+        var createRes = await http.PostAsJsonAsync<PostCreate>("/api/post", model);
+
+        if (createRes.IsSuccessStatusCode)
+            navigation.NavigateTo("/post");
+        else
+            errorMessage = "Post create failed, please try again later.";
+    }
+}

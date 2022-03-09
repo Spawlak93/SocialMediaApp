@@ -2,7 +2,6 @@
 using SocialMediaApp.Server.Data;
 using SocialMediaApp.Server.Models;
 using SocialMediaApp.Shared.CommentModels;
-using SocialMediaApp.Shared.Post;
 using SocialMediaApp.Shared.PostModels;
 using SocialMediaApp.Shared.ReplyModels;
 using System;
@@ -43,7 +42,7 @@ namespace SocialMediaApp.Server.Services.PostServices
                 Id = p.Id,
                 Title = p.Title,
                 NumberOfComments = p.Comments.Count,
-                Preview = p.Content.Length <= 50 ? p.Content : p.Content.Take(50).ToString() + "..."
+                Preview = p.Content.Length <= 50 ? p.Content : new String(p.Content.Take(50).ToArray()) + "..."
             }).ToListAsync();
 
             return postList;
@@ -51,9 +50,13 @@ namespace SocialMediaApp.Server.Services.PostServices
 
         public async Task<PostDetail> GetPostByIdAsync(int postId)
         {
-            var postEntity = await _context
+            var postEntity = _context
                 .Posts
-                .FirstOrDefaultAsync(p => postId == p.Id);
+                .Include(c => c.User)
+                .ToList()
+                .FirstOrDefault(p => postId == p.Id);
+
+            
 
             var userEntity = postEntity.User;
             var commments = postEntity.Comments.ToList();

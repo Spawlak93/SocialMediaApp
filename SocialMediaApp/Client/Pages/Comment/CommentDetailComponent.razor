@@ -1,0 +1,13 @@
+﻿@using SocialMediaApp.Shared.CommentModels
+
+<div class="comment">
+    <p>@Comment.Content</p>
+    <p>@Comment.UserName</p>
+
+    <ReplyDetailComponent PassedObject=reply />
+</div>
+
+@code {
+    [Parameter] 
+    public CommentDetail Comment { get; set; }
+}

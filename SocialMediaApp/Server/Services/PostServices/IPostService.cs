@@ -1,5 +1,4 @@
-﻿using SocialMediaApp.Shared.Post;
-using SocialMediaApp.Shared.PostModels;
+﻿using SocialMediaApp.Shared.PostModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

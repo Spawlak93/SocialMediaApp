@@ -1,0 +1,48 @@
+﻿@page "/post/{PostId:int}"
+@using SocialMediaApp.Shared.PostModels
+@attribute [Authorize]
+@inject HttpClient http
+
+@if (Post == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container mx-auto">
+        <h3 class="text-center">@Post.Title</h3>
+        <br />
+        <hr />
+        <br />
+
+
+        <h5>@Post.UserName</h5>
+        <h6>@Post.CreatedUtc</h6>
+        <p>@Post.Content</p>
+        <a href=@($"/note/edit/{PostId}")>Edit</a>
+        <a href=@($"/note/delete/{PostId}")>Delete</a>
+
+        <br />
+        <hr />
+        <br />
+
+        @foreach(var comment in Post.Comments)
+        {
+            <SocialMediaApp.Client.Pages.Comment.CommentDetailComponent PassedObject=comment />
+        }
+
+    </div>
+
+
+}
+
+@code {
+    [Parameter]
+    public int PostId { get; set; }
+    public PostDetail Post { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Post = await http.GetFromJsonAsync<PostDetail>($"/api/post/{PostId}");
+    }
+}

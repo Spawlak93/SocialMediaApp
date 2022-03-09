@@ -1,0 +1,17 @@
+﻿@using SocialMediaApp.Shared.ReplyModels
+<div class="Reply">
+    <p>@Reply.Content</p>
+
+    <p>@Reply.UserName</p>
+
+    @foreach(var reply in Reply.Replies)
+    {
+        <ReplyDetailComponent PassedObject=reply />
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public ReplyDetail Reply { get; set; }
+}
